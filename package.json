@@ -1,0 +1,24 @@
+{
+  "name": "mv-dictionary",
+  "version": "1.0.0",
+  "description": "This multi-value dictionary is designed to be installed using NPM and used via the terminal as a global command. It will place words into a dictionary that can be looked up.",
+  "main": "index.js",
+  "scripts": {
+    "build" : "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanencoded/mv-dictionary.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryanencoded/mv-dictionary/issues"
+  },
+  "homepage": "https://github.com/ryanencoded/mv-dictionary#readme",
+  "devDependencies": {
+    "typescript": "^4.6.3"
+  }
+}
