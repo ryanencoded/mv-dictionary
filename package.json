@@ -2,27 +2,38 @@
   "name": "mv-dictionary",
   "version": "1.0.0",
   "description": "This multi-value dictionary is designed to be installed using NPM and used via the terminal as a global command. It will place words into a dictionary that can be looked up.",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --config jestconfig.json",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "tslint -p tsconfig.json"
+    "lint": "tslint -p tsconfig.json",
+    "prepare" : "npm run build",
+    "prepublishOnly" : "npm test && npm run lint",
+    "preversion" : "npm run lint",
+    "version" : "npm run format && git add -A src",
+    "postversion" : "git push && git push --tags"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ryanencoded/mv-dictionary.git"
   },
-  "keywords": [],
+  "keywords": ["Dictionary App", "Multi Value Dictionary"],
   "author": "Ryan Thompson",
   "license": "ISC",
-  "files": ["lib/**/*"],
+  "files": [
+    "lib/**/*"
+  ],
   "bugs": {
     "url": "https://github.com/ryanencoded/mv-dictionary/issues"
   },
   "homepage": "https://github.com/ryanencoded/mv-dictionary#readme",
   "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1",
     "prettier": "^2.6.2",
+    "ts-jest": "^27.1.4",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.6.3"
