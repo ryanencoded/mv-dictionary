@@ -47,7 +47,7 @@ readlineSync.promptCLLoop({
     removeall: function(target) {
         try{
             dictionary.removeAll(target)
-            console.log(`REMOVED ${target}`)
+            console.log(`Removed ${target}`)
         }catch(err){
             console.error(getErrorMessage(err))
         }
