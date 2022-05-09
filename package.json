@@ -4,9 +4,6 @@
   "description": "This multi-value dictionary is designed to place words into a dictionary that can be looked up.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "bin": {
-    "mvdic": "./lib/index.js"
-  },
   "scripts": {
     "build": "tsc",
     "start": "node lib/index.js",
@@ -23,7 +20,7 @@
     "Multi Value Dictionary"
   ],
   "author": "Ryan Thompson",
-  "license": "ISC",
+  "license": "MIT",
   "files": [
     "lib/**/*"
   ],

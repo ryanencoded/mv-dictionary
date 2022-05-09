@@ -24,5 +24,10 @@ The following commands are available for the dictionary and case does not matter
 - `MEMBEREXISTS foo bar`
 - `ALLMEMBERS`
 - `ITEMS`
+- `EXIT`
 
 You can alter the arguments after each command to your liking, but the basic principles are the same.
+
+## Testing
+
+I have included automated unit tests for all required functionality. To run these tests, run `npm test` and all tests should pass without issue.
