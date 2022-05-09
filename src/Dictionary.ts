@@ -34,7 +34,7 @@ export const remove = (key: string, member: string) => {
     }
 
     if(!isMemberExist(key, member)){
-        throw new Error(`ERROR, member "${member}" already exists for key "${key}"`)
+        throw new Error(`ERROR, member "${member}" does not exists for key "${key}"`)
     }
 
     //grab the array and filter the member out to remove
