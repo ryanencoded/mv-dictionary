@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+/* tslint-disable: no-console */
 import * as readlineSync from 'readline-sync';
 import dictionary from "./Dictionary"
 
@@ -8,7 +8,7 @@ function getErrorMessage(error: unknown) {
 }
 
 readlineSync.promptCLLoop({
-    add: function(target, into) {
+    add(target, into) {
         try{
             dictionary.add(target, into)
             console.log(`Added ${into} to ${target}`)
@@ -16,7 +16,7 @@ readlineSync.promptCLLoop({
             console.error(getErrorMessage(err))
         }
     },
-    remove: function(target, into) {
+    remove(target, into) {
         try{
             dictionary.remove(target, into)
             console.log(`Removed ${into} from ${target}`)
@@ -24,7 +24,7 @@ readlineSync.promptCLLoop({
             console.error(getErrorMessage(err))
         }
     },
-    keys: function() {
+    keys() {
         try{
             const keys = dictionary.keys()
             if(keys.length > 0){
@@ -36,7 +36,7 @@ readlineSync.promptCLLoop({
             console.error(getErrorMessage(err))
         }
     },
-    members: function(target) {
+    members(target) {
         try{
             const members = dictionary.members(target)
             members.forEach((member, i) => console.log(`${i + 1}) ${member}`))
@@ -44,7 +44,7 @@ readlineSync.promptCLLoop({
             console.error(getErrorMessage(err))
         }
     },
-    removeall: function(target) {
+    removeall(target) {
         try{
             dictionary.removeAll(target)
             console.log(`Removed ${target}`)
@@ -52,7 +52,7 @@ readlineSync.promptCLLoop({
             console.error(getErrorMessage(err))
         }
     },
-    clear: function() {
+    clear() {
         try{
             dictionary.clear()
             console.log(`Cleared`)
@@ -60,7 +60,7 @@ readlineSync.promptCLLoop({
             console.error(getErrorMessage(err))
         }
     },
-    keyexists: function(target) {
+    keyexists(target) {
         try{
             const result = dictionary.isKeyExist(target)
             console.log(`${result}`)
@@ -68,7 +68,7 @@ readlineSync.promptCLLoop({
             console.error(getErrorMessage(err))
         }
     },
-    memberexists: function(target, into) {
+    memberexists(target, into) {
         try{
             const result = dictionary.isMemberExist(target, into)
             console.log(`${result}`)
@@ -76,7 +76,7 @@ readlineSync.promptCLLoop({
             console.error(getErrorMessage(err))
         }
     },
-    allmembers: function() {
+    allmembers() {
         try{
             const members = dictionary.allMembers()
             if(members.length > 0){
@@ -88,7 +88,7 @@ readlineSync.promptCLLoop({
             console.error(getErrorMessage(err))
         }
     },
-    items: function() {
+    items() {
         try{
             const items = dictionary.allItems()
             if(items.length > 0){
@@ -106,7 +106,7 @@ readlineSync.promptCLLoop({
             console.error(getErrorMessage(err))
         }
     },
-    exit: function() { return true; }
+    exit() { return true; }
 });
 
 console.log('Exited');

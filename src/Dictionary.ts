@@ -4,12 +4,14 @@ type Dictionary = {
     [key: string]: string[]; 
 }
 
-let dictionary: Dictionary = {}
+const dictionary: Dictionary = {}
 
 /**
-@name: add
-@description: adds a member to collection for given key. Displays an error if the member already exists for the key.
-**/
+ * @name: add
+ * @description: adds a member to collection for given key. Displays an error if the member already exists for the key.
+ * @param {string} key - The key to add the member to.
+ * @param {string} member - The member to place the key in.
+ */
 export const add = (key: string, member: string) => {
     if(isKeyExist(key)){
         if(isMemberExist(key, member)){
@@ -25,9 +27,11 @@ export const add = (key: string, member: string) => {
 }
 
 /**
-@name: remove
-@description: removes a member from key. If the last member is removed from the key, the key is removed from the dictionary. If the key or member does not exist, displays an error.
-**/
+ * @name: remove
+ * @description: removes a member from key. If the last member is removed from the key, the key is removed from the dictionary. If the key or member does not exist, displays an error.
+ * @param {string} key - The key to remove the member from.
+ * @param {string} member - The member to remove from the key.
+ */
 export const remove = (key: string, member: string) => {
     if(!isKeyExist(key)){
         throw new Error(`ERROR, key "${key}" does not exist`)
@@ -37,9 +41,8 @@ export const remove = (key: string, member: string) => {
         throw new Error(`ERROR, member "${member}" does not exists for key "${key}"`)
     }
 
-    //grab the array and filter the member out to remove
     dictionary[key] = dictionary[key].filter((m) => m !== member)
-    //Check if key is empty and delete key if true
+
     if(dictionary[key].length === 0){
         delete dictionary[key]
     }
@@ -48,9 +51,10 @@ export const remove = (key: string, member: string) => {
 }
 
 /**
-@name: removeAll
-@description: removes all members for a key and removes the key from the dictionary. Returns an error if the key does not exist.
-**/
+ * @name: removeAll
+ * @description: removes all members for a key and removes the key from the dictionary. Returns an error if the key does not exist.
+ * @param {string} key - The key to remove all members from.
+ */
 export const removeAll = (key: string) => {
     if(!isKeyExist(key)){
         throw new Error(`ERROR, key "${key}" does not exist`)
@@ -61,15 +65,18 @@ export const removeAll = (key: string) => {
 }
 
 /**
-@name: isKeyExist
-@description: returns a boolean if the key exists
-**/
+ * @name: isKeyExist
+ * @description: returns a boolean if the key exists
+ * @param {string} key - The key to check for.
+ */
 export const isKeyExist = (key: string): boolean => (typeof dictionary[key] !== "undefined" ? true : false)
 
 /**
-@name: isMemberExist
-@description: returns a boolean if the member exists on the key, false if key does not exist
-**/
+ * @name: isMemberExist
+ * @description: returns a boolean if the member exists on the key, false if key does not exist
+ * @param {string} key - The key to check for.
+ * @param {string} member - The member to check for.
+ */
 export const isMemberExist = (key: string, member: string): boolean => {
     if(isKeyExist(key)){
         return dictionary[key].includes(member)
@@ -79,15 +86,16 @@ export const isMemberExist = (key: string, member: string): boolean => {
 }
 
 /**
-@name: keys
-@description: returns all the keys in the dictionary. Order is not guaranteed.
-**/
+ * @name: keys
+ * @description: returns all the keys in the dictionary. Order is not guaranteed.
+ */
 export const keys = (): string[] => Object.keys(dictionary)
 
 /**
-@name: members
-@description: returns the collection of strings for a given key. Return order not guaranteed. Returns an error if key does not exist.
-**/
+ * @name: members
+ * @description: returns the collection of strings for a given key. Return order not guaranteed. Returns an error if key does not exist.
+ * @param {string} key - The key to return members for.
+ */
 export const members = (key: string): string[] => {
     if(!isKeyExist(key)){
         throw new Error(`ERROR, key "${key}" does not exist`)
@@ -97,24 +105,24 @@ export const members = (key: string): string[] => {
 }
 
 /**
-@name: clear
-@description: removes all keys and all members from dictionary
-**/
+ * @name: clear
+ * @description: removes all keys and all members from dictionary
+ */
 export const clear = () => {
     Object.keys(dictionary).forEach(key => delete dictionary[key]);
     return
 }
 
 /**
-@name: allMembers
-@description: returns all members in the dictionary. Returns nothing if there are none. Order is not guaranteed.
-**/
+ * @name: allMembers
+ * @description: returns all members in the dictionary. Returns nothing if there are none. Order is not guaranteed.
+ */
 export const allMembers = (): string[] => Object.values(dictionary).flat()
 
-/** TODO
-@name: allItems
-@description: returns all keys in the dictionary and all their members. Returns nothing if there are none. Order is not guaranteed.
-**/
+/**
+ * @name: allItems
+ * @description: returns all keys in the dictionary and all their members. Returns nothing if there are none. Order is not guaranteed.
+ */
 export const allItems = (): [string, string[]][] => {
     return Object.entries(dictionary)
 }
