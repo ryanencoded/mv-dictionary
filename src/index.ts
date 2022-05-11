@@ -8,6 +8,14 @@ function getErrorMessage(error: unknown) {
 }
 
 readlineSync.promptCLLoop({
+  intersect(target, into) {
+    try {
+      const intersecting = dictionary.intersect(target, into);
+      console.log(`Intersecting ${intersecting} for ${target} and ${into}`);
+    } catch (err) {
+      console.error(getErrorMessage(err));
+    }
+  },
   add(target, into) {
     try {
       dictionary.add(target, into);

@@ -6,6 +6,27 @@ const dictionary: Dictionary = {};
 
 /**
  * @name: add
+ * @description: checks if two keys have intersecting members
+ * @param {string} key1 - The first key to check
+ * @param {string} key2 - The second key to check
+ */
+ export const intersect = (key1: string, key2: string): string[] => {
+  //check for the keys first
+  if(!isKeyExist(key1) || !isKeyExist(key2)){
+    throw new Error(`ERROR, keys "${key1}" or ${key2} do not exist`);
+  }
+  //pull the members for each key
+  const members1 = dictionary[key1]
+  const members2 = dictionary[key2]
+  //check for duplicates
+  const intersecting = members1.filter(x => members2.includes(x))
+  //return those duplicates
+  return intersecting;
+};
+
+
+/**
+ * @name: add
  * @description: adds a member to collection for given key. Displays an error if the member already exists for the key.
  * @param {string} key - The key to add the member to.
  * @param {string} member - The member to place the key in.
@@ -126,6 +147,7 @@ export const allItems = (): [string, string[]][] => {
 };
 
 const api = {
+  intersect,
   add,
   remove,
   removeAll,
